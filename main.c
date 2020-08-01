@@ -16,34 +16,11 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
-
-/* USER CODE END Includes */
-
-/* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
-
-/* USER CODE END PTD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
-/* USER CODE END PD */
-
-/* Private macro -------------------------------------------------------------*/
-/* USER CODE BEGIN PM */
-
-/* USER CODE END PM */
-
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c2;
 
 UART_HandleTypeDef huart1;
-
-/* USER CODE BEGIN PV */
-
-/* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -51,39 +28,20 @@ static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_I2C2_Init(void);
 static void MX_USART1_UART_Init(void);
-/* USER CODE BEGIN PFP */
-
-/* USER CODE END PFP */
-
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
-
-/* USER CODE END 0 */
 
 /**
  * @brief  The application entry point.
  * @retval int
  */
 int main(void) {
-	/* USER CODE BEGIN 1 */
-
-	/* USER CODE END 1 */
 
 	/* MCU Configuration--------------------------------------------------------*/
 
 	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
 	HAL_Init();
 
-	/* USER CODE BEGIN Init */
-
-	/* USER CODE END Init */
-
 	/* Configure the system clock */
 	SystemClock_Config();
-
-	/* USER CODE BEGIN SysInit */
-
-	/* USER CODE END SysInit */
 
 	/* Initialize all configured peripherals */
 	MX_GPIO_Init();
@@ -100,7 +58,6 @@ int main(void) {
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
-	/* USER CODE BEGIN WHILE */
 	while (1) {
 		for (uint8_t i = 1; i <= 127; i++) {       // I2C1
 			estado = HAL_I2C_Master_Receive(&hi2c1,(uint16_t) i, byteA, 1, 100);
@@ -132,12 +89,7 @@ int main(void) {
 
 		HAL_UART_Transmit(&huart1, "\r\n", 2, 10);
 		HAL_Delay(1000);
-
-		/* USER CODE END WHILE */
-
-		/* USER CODE BEGIN 3 */
 	}
-	/* USER CODE END 3 */
 }
 
 /**
@@ -180,14 +132,6 @@ void SystemClock_Config(void) {
  * @retval None
  */
 static void MX_I2C1_Init(void) {
-
-	/* USER CODE BEGIN I2C1_Init 0 */
-
-	/* USER CODE END I2C1_Init 0 */
-
-	/* USER CODE BEGIN I2C1_Init 1 */
-
-	/* USER CODE END I2C1_Init 1 */
 	hi2c1.Instance = I2C1;
 	hi2c1.Init.ClockSpeed = 100000;
 	hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
@@ -200,10 +144,6 @@ static void MX_I2C1_Init(void) {
 	if (HAL_I2C_Init(&hi2c1) != HAL_OK) {
 		Error_Handler();
 	}
-	/* USER CODE BEGIN I2C1_Init 2 */
-
-	/* USER CODE END I2C1_Init 2 */
-
 }
 
 /**
@@ -212,14 +152,6 @@ static void MX_I2C1_Init(void) {
  * @retval None
  */
 static void MX_I2C2_Init(void) {
-
-	/* USER CODE BEGIN I2C2_Init 0 */
-
-	/* USER CODE END I2C2_Init 0 */
-
-	/* USER CODE BEGIN I2C2_Init 1 */
-
-	/* USER CODE END I2C2_Init 1 */
 	hi2c2.Instance = I2C2;
 	hi2c2.Init.ClockSpeed = 100000;
 	hi2c2.Init.DutyCycle = I2C_DUTYCYCLE_2;
@@ -232,9 +164,6 @@ static void MX_I2C2_Init(void) {
 	if (HAL_I2C_Init(&hi2c2) != HAL_OK) {
 		Error_Handler();
 	}
-	/* USER CODE BEGIN I2C2_Init 2 */
-
-	/* USER CODE END I2C2_Init 2 */
 }
 
 /**
@@ -243,14 +172,6 @@ static void MX_I2C2_Init(void) {
  * @retval None
  */
 static void MX_USART1_UART_Init(void) {
-
-	/* USER CODE BEGIN USART1_Init 0 */
-
-	/* USER CODE END USART1_Init 0 */
-
-	/* USER CODE BEGIN USART1_Init 1 */
-
-	/* USER CODE END USART1_Init 1 */
 	huart1.Instance = USART1;
 	huart1.Init.BaudRate = 115200;
 	huart1.Init.WordLength = UART_WORDLENGTH_8B;
@@ -262,10 +183,6 @@ static void MX_USART1_UART_Init(void) {
 	if (HAL_UART_Init(&huart1) != HAL_OK) {
 		Error_Handler();
 	}
-	/* USER CODE BEGIN USART1_Init 2 */
-
-	/* USER CODE END USART1_Init 2 */
-
 }
 
 /**
@@ -294,19 +211,12 @@ static void MX_GPIO_Init(void) {
 
 }
 
-/* USER CODE BEGIN 4 */
-
-/* USER CODE END 4 */
-
 /**
  * @brief  This function is executed in case of error occurrence.
  * @retval None
  */
 void Error_Handler(void) {
-	/* USER CODE BEGIN Error_Handler_Debug */
 	/* User can add his own implementation to report the HAL error return state */
-
-	/* USER CODE END Error_Handler_Debug */
 }
 
 #ifdef  USE_FULL_ASSERT
@@ -319,9 +229,7 @@ void Error_Handler(void) {
   */
 void assert_failed(uint8_t *file, uint32_t line)
 { 
-  /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-  /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
