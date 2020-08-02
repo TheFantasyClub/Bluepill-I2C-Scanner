@@ -52,6 +52,7 @@ int main ( void )
     /* USER CODE BEGIN 2 */
     uint8_t estado = 69;
     uint8_t byteA[1];
+    uint8_t direccion[5];
     HAL_UART_Transmit( &huart1, "\nI2C Scanner\r\n", 14, 100 );
     HAL_UART_Transmit( &huart1, "Scanning...\r\n", 13, 100 );
     HAL_Delay( 2000 );
@@ -70,7 +71,6 @@ int main ( void )
                 {
                     HAL_UART_Transmit( &huart1, "0", 1, 100 );
                 }
-                uint8_t direccion[5];
                 itoa( i, direccion, 16 );
                 HAL_UART_Transmit( &huart1, direccion, 5, 100 );
             }
@@ -88,7 +88,6 @@ int main ( void )
                 {
                     HAL_UART_Transmit( &huart1, "0", 1, 100 );
                 }
-                uint8_t direccion[5];
                 itoa(i, direccion, 16);
                 HAL_UART_Transmit( &huart1, direccion, 5, 100 );
             }
